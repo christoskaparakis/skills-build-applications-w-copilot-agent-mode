@@ -15,6 +15,12 @@ const navItems = [
 ];
 
 function App() {
+  const codespaceName = import.meta.env.VITE_CODESPACE_NAME?.trim();
+  const codespaceLabel =
+    codespaceName && codespaceName !== 'undefined' && codespaceName !== 'your-codespace-name'
+      ? codespaceName
+      : 'unset';
+
   return (
     <div className="container py-4">
       <header className="mb-4">
@@ -24,7 +30,7 @@ function App() {
             <h1 className="mb-0">Fitness Dashboard</h1>
           </div>
           <div className="text-muted small">
-            VITE_CODESPACE_NAME: {import.meta.env.VITE_CODESPACE_NAME || 'unset'}
+            VITE_CODESPACE_NAME: {codespaceLabel}
           </div>
         </div>
       </header>

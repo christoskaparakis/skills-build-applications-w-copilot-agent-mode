@@ -2,8 +2,12 @@ import { useEffect, useState } from 'react';
 
 const getApiBaseUrl = () => {
   const codespaceName = import.meta.env.VITE_CODESPACE_NAME?.trim();
+  const hasValidCodespaceName =
+    Boolean(codespaceName) &&
+    codespaceName !== 'undefined' &&
+    codespaceName !== 'your-codespace-name';
 
-  if (codespaceName && codespaceName !== 'undefined') {
+  if (hasValidCodespaceName) {
     return `https://${codespaceName}-8000.app.github.dev/api`;
   }
 
